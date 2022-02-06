@@ -1,16 +1,26 @@
-import Tree from './Tree';
-import TreeNode from './TreeNode';
+import yargs from 'yargs';
+import sortedToBST from './01_sortedToBST';
+import insertNode from './02_insertNode';
+import findNode from './03_findNode';
 
-const tree = new Tree<number>();
-tree.rootNode = new TreeNode(10);
-tree.rootNode.left = new TreeNode(8);
-tree.rootNode.left.left = new TreeNode(7);
-tree.rootNode.left.left.left = new TreeNode(6);
-tree.rootNode.left.left.left.left = new TreeNode(5);
+const fetchScenario = (): string => {
+  const { s: scenario } = yargs.parseSync();
+  if (typeof scenario !== 'string') {
+    throw new Error('Missing scenario');
+  }
+  return scenario;
+};
 
-const balancedTree = tree.createBalancedTree();
-balancedTree.preOrderTraversalAndOutput();
-console.log(balancedTree.rootNode?.right?.key);
-console.log(balancedTree.rootNode?.right?.right?.key);
-// console.log(balancedTree.rootNode?.left?.left?.key);
-// console.log(balancedTree.rootNode?.left?.right?.key);
+const start = () => {
+  const scenario = fetchScenario();
+  if (scenario === 'sortedToBST') {
+    return sortedToBST();
+  } else if (scenario === 'insertNode') {
+    return insertNode();
+  } else if (scenario === 'findNode') {
+    return findNode();
+  }
+  console.log('No valid scenario selected');
+};
+
+start();

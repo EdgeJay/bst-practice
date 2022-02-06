@@ -4,6 +4,44 @@ import Stack from './Stack';
 class Tree<T extends number | string> {
   rootNode: TreeNode<T> | null = null;
 
+  insertNode(key: T): Tree<T> {
+    this.rootNode = this._insert(this.rootNode, key);
+    return this;
+  }
+
+  private _insert(node: TreeNode<T> | null, key: T): TreeNode<T> {
+    if (!node) {
+      return new TreeNode(key);
+    }
+    if (key < node.key) {
+      node.left = this._insert(node.left, key);
+    } else {
+      node.right = this._insert(node.right, key);
+    }
+    return node;
+  }
+
+  findNode(key: T): boolean {
+    const node = this._find(this.rootNode, key);
+    return !!node;
+  }
+
+  private _find(node: TreeNode<T> | null, key: T): TreeNode<T> | null {
+    if (!node) {
+      return null;
+    }
+    if (node.key === key) {
+      return node;
+    }
+    if (key < node.key) {
+      return this._find(node.left, key);
+    }
+    if (key > node.key) {
+      return this._find(node.right, key);
+    }
+    return node;
+  }
+
   /**
    * Perform preOrder traversal of Tree and output results
    */
