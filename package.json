@@ -1,7 +1,7 @@
 {
   "name": "bst-practice",
   "version": "1.0.0",
-  "description": "DFS algorithm practice with island scenario",
+  "description": "Binary Search Tree practice scenarios",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
