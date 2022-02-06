@@ -1,5 +1,4 @@
 import Tree from './Tree';
-import TreeNode from './TreeNode';
 
 /**
  * Example of inserting keys into Binary Search Tree (BST)
@@ -16,6 +15,12 @@ const insertNode = () => {
 
   tree.inOrderTraversalAndOutput();
   tree.preOrderTraversalAndOutput();
+
+  tree.insertNode(32);
+  tree.inOrderTraversalAndOutput();
+
+  tree.insertNode(6);
+  tree.inOrderTraversalAndOutput();
 };
 
 export default insertNode;

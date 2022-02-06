@@ -42,6 +42,34 @@ class Tree<T extends number | string> {
     return node;
   }
 
+  min(): T | null {
+    return this._findMin(this.rootNode);
+  }
+
+  private _findMin(node: TreeNode<T> | null): T | null {
+    if (!node) {
+      return null;
+    }
+    if (!node.left) {
+      return node.key;
+    }
+    return this._findMin(node.left);
+  }
+
+  max(): T | null {
+    return this._findMax(this.rootNode);
+  }
+
+  private _findMax(node: TreeNode<T> | null): T | null {
+    if (!node) {
+      return null;
+    }
+    if (!node.right) {
+      return node.key;
+    }
+    return this._findMax(node.right);
+  }
+
   /**
    * Perform preOrder traversal of Tree and output results
    */

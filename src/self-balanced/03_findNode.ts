@@ -1,5 +1,4 @@
 import Tree from './Tree';
-import TreeNode from './TreeNode';
 
 /**
  * Example of searching for key into Binary Search Tree (BST)
@@ -23,6 +22,9 @@ const findNode = () => {
 
   tree.insertNode(32);
   console.log(`Is "32" in tree: ${tree.findNode(32)}`);
+
+  console.log(`Smallest value in tree is ${tree.min()}`);
+  console.log(`Biggest value in tree is ${tree.max()}`);
 };
 
 export default findNode;
